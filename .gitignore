@@ -1,7 +1,9 @@
-# Compiled class file
 *.class
 .idea
 *.iml
+mvnw*
+.mvn/
+# Compiled class file
 # Log file
 *.log
 
