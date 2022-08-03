@@ -5,8 +5,7 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 import com.atguigu.gmall.pms.entity.CategoryEntity;
 
-import java.util.Map;
-
+import java.util.List;
 /**
  * 商品三级分类
  *
@@ -17,5 +16,8 @@ import java.util.Map;
 public interface CategoryService extends IService<CategoryEntity> {
 
     PageResultVo queryPage(PageParamVo paramVo);
+    /**@Author 于明岩 @Description 根据父id查询分类 @Date 2022/8/3 10:17 @Param [parentId] @return com.atguigu.gmall.pms.entity.CategoryEntity*/
+    List<CategoryEntity> querySortByParentId(Long parentId);
+
 }
 

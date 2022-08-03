@@ -2,4 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.gmall.pms.mapper.CategoryMapper">
 
+    <select id="querySortByParentId" resultType="com.atguigu.gmall.pms.entity.CategoryEntity" parameterType="long">
+        select pcg.id ,pcg.name ,pcg.parent_id ,pcg.status,pcg.sort ,pcg.icon ,pcg.unit
+        from guli_pms.pms_category pcg
+        where pcg.parent_id = #{parentId,jdbcType=BIGINT} order by pcg.parent_id asc
+    </select>
+    <select id="querySort" resultType="com.atguigu.gmall.pms.entity.CategoryEntity">
+        select pcg.id ,pcg.name ,pcg.parent_id ,pcg.status,pcg.sort ,pcg.icon ,pcg.unit
+        from guli_pms.pms_category pcg
+        where 1=1 order by pcg.parent_id asc
+    </select>
 </mapper>
