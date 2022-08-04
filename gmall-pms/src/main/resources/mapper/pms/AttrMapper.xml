@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.gmall.pms.mapper.AttrMapper">
 
+    <select id="querySpecifications" resultType="com.atguigu.gmall.pms.entity.AttrEntity" parameterType="long">
+        select pa.id ,pa.name ,pa.search_type ,pa.icon ,pa.value_select ,pa.`type` ,
+               pa.enable ,pa.show_desc ,pa.category_id ,pa.group_id
+        from guli_pms.pms_attr pa where pa.group_id = '1' and pa.`type` = '1'
+    </select>
 </mapper>

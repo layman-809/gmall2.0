@@ -1,8 +1,11 @@
 package com.atguigu.gmall.pms.mapper;
 
 import com.atguigu.gmall.pms.entity.AttrEntity;
+import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.ArrayList;
 
 /**
  * 商品属性
@@ -13,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AttrMapper extends BaseMapper<AttrEntity> {
-	
+
+    ArrayList<AttrEntity> querySpecifications(Long groupId);
 }

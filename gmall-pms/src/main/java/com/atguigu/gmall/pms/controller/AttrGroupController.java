@@ -5,13 +5,7 @@ import java.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.gmall.pms.service.AttrGroupService;
@@ -88,6 +82,13 @@ public class AttrGroupController {
 		attrGroupService.removeByIds(ids);
 
         return ResponseVo.ok();
+    }
+
+    @RequestMapping(value = "/category/{id}",method = RequestMethod.GET)
+    @ApiOperation("查询规格分组")
+    public ResponseVo<List<AttrGroupEntity>> queryAttrGroup(@PathVariable("id") Long parentId){
+        List<AttrGroupEntity> attrGroupEntities = attrGroupService.queryAttrGroup(parentId);
+        return ResponseVo.ok(attrGroupEntities);
     }
 
 }
