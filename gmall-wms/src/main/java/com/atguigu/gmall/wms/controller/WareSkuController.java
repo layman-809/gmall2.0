@@ -5,13 +5,7 @@ import java.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gmall.wms.entity.WareSkuEntity;
 import com.atguigu.gmall.wms.service.WareSkuService;
@@ -90,4 +84,17 @@ public class WareSkuController {
         return ResponseVo.ok();
     }
 
+    /**
+     * @Author 于明岩
+     * @Description 查询商品库存
+     * @Date 2022/8/8 11:14
+     * @Param [skuId]
+     * @return com.atguigu.gmall.common.bean.ResponseVo<java.util.List<com.atguigu.gmall.wms.entity.WareSkuEntity>>
+     **/
+    @ApiOperation("查询商品库存")
+    @RequestMapping(value = "/sku/{skuId}",method = RequestMethod.GET)
+    public ResponseVo<List<WareSkuEntity>> queryCommodityStocks(@PathVariable("skuId") Long skuId){
+        List<WareSkuEntity> wareSkuEntityList = wareSkuService.queryCommodityStocks(skuId);
+        return ResponseVo.ok(wareSkuEntityList);
+    }
 }
