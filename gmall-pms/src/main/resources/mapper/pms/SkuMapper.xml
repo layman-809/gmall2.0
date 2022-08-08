@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.gmall.pms.mapper.SkuMapper">
 
+    <select id="querySkuBySpuId" resultType="com.atguigu.gmall.pms.entity.SkuEntity" parameterType="long">
+        select ps.id ,ps.spu_id ,ps.name ,ps.category_id ,ps.default_image ,ps.title ,ps.subtitle ,ps.price ,ps.weight
+        from guli_pms.pms_sku ps where ps.spu_id = #{spuId,jdbcType=BIGINT}
+    </select>
 </mapper>
