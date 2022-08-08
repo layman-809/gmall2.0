@@ -2,4 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.gmall.pms.mapper.SpuMapper">
 
+    <select id="queryProductCountBycCategoryId" resultType="java.lang.Long">
+        select count(1)
+        from guli_pms.pms_spu ps
+        where 1=1
+        <if test="categoryId != 0">
+            and ps.category_id = #{categoryId,jdbcType=BIGINT}
+        </if>
+    </select>
+    <select id="queryProductListBycCategoryId" resultType="com.atguigu.gmall.pms.entity.SpuEntity">
+        select ps.id ,ps.name ,ps.category_id ,ps.brand_id ,ps.publish_status ,ps.create_time ,ps.update_time
+        from guli_pms.pms_spu ps
+        where 1=1
+        <if test="categoryId != 0">
+            and ps.category_id = #{categoryId,jdbcType=BIGINT}
+        </if>
+        limit #{pageNum,jdbcType=BIGINT},#{pageSize,jdbcType=BIGINT}
+    </select>
+    <select id="queryProductCountByKey" resultType="java.lang.Long">
+        select count(1)
+        from guli_pms.pms_spu ps
+        where ps.category_id = #{key,jdbcType=VARCHAR}
+    </select>
+    <select id="queryProductListByKey" resultType="com.atguigu.gmall.pms.entity.SpuEntity">
+        select ps.id ,ps.name ,ps.category_id ,ps.brand_id ,ps.publish_status ,ps.create_time ,ps.update_time
+        from guli_pms.pms_spu ps
+        where ps.category_id = #{key,jdbcType=VARCHAR}
+        limit #{pageNum,jdbcType=BIGINT},#{pageSize,jdbcType=BIGINT}
+    </select>
 </mapper>
