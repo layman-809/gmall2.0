@@ -98,12 +98,5 @@ public class SpuController {
         return ResponseVo.ok(pageResultVo);
     }
 
-    @ApiOperation("spu商品信息查询")
-//    @GetMapping("category/{categoryId}")
-    public ResponseVo<PageResultVo> querySpuInfo(PageParamVo pageParamVo, @PathVariable("categoryId")Long categoryId){
-
-        PageResultVo pageResultVo = this.spuService.querySpuInfo(pageParamVo, categoryId);
-        return ResponseVo.ok(pageResultVo);
-    }
 
 }
