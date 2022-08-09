@@ -1,5 +1,6 @@
 package com.atguigu.gmall.pms.service;
 
+import com.atguigu.gmall.pms.vo.GroupVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
@@ -28,5 +29,14 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
      * @param parentId*/
     List<AttrGroupEntity> queryAttrGroup(Long parentId);
 
+
+    /**
+     * @Author 于明岩
+     * @Description 查询分类下的分组及其规格参数
+     * @Date 2022/8/8 14:22
+     * @Param [catId]
+     * @return java.util.List<com.atguigu.gmall.pms.vo.GroupVo>
+     **/
+    List<GroupVo> queryAttributeInfo(Long catId);
 }
 

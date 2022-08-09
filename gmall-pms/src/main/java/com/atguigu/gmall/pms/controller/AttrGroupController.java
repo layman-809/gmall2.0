@@ -2,6 +2,7 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
 
+import com.atguigu.gmall.pms.vo.GroupVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,14 @@ public class AttrGroupController {
     public ResponseVo<List<AttrGroupEntity>> queryAttrGroup(@PathVariable("id") Long parentId){
         List<AttrGroupEntity> attrGroupEntities = attrGroupService.queryAttrGroup(parentId);
         return ResponseVo.ok(attrGroupEntities);
+    }
+
+
+    @ApiOperation("查询分类下的分组及其规格参数")
+    @RequestMapping(value = "/withattrs/{catId}",method = RequestMethod.GET)
+    public ResponseVo<List<GroupVo>> queryAttributeInfo(@PathVariable("catId") Long catId){
+        List<GroupVo> groupVoList = attrGroupService.queryAttributeInfo(catId);
+        return ResponseVo.ok(groupVoList);
     }
 
 }
